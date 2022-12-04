@@ -1,16 +1,18 @@
+import { Sales } from "pages/Sales/Sales";
+import { Routes, Route } from "react-router-dom";
+import { Box } from "./Box/Box";
+import { Layout } from "./Layout/Layout";
+
 export const App = () => {
   return (
-    <div
-      style={{
-        height: '100vh',
-        display: 'flex',
-        justifyContent: 'center',
-        alignItems: 'center',
-        fontSize: 40,
-        color: '#010101'
-      }}
-    >
-      React homework template
-    </div>
+    <Box>
+      <Routes>
+        <Route path="/" element={<Layout />}>
+          <Route path="sales" element={<Sales />}/>
+            
+         
+        </Route>
+      </Routes>
+   </Box>
   );
 };
