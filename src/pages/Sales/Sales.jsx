@@ -1,5 +1,5 @@
 import { Box } from 'components/Box/Box';
-import { NavLink, Outlet } from 'react-router-dom';
+import { NavLink} from 'react-router-dom';
 import styled from 'styled-components';
 
 const navItems = [
