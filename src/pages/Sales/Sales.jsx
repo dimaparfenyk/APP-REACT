@@ -1,5 +1,5 @@
 import { Box } from 'components/Box/Box';
-import { NavLink} from 'react-router-dom';
+import { NavLink, Outlet} from 'react-router-dom';
 import styled from 'styled-components';
 
 const navItems = [
@@ -34,6 +34,7 @@ export const Sales = () => {
                         </NavItem>))}
                 </Box>
             </Box>
+            <Outlet/>
         </Box>
     );
 };
