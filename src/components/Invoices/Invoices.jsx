@@ -23,7 +23,7 @@ export const Invoices = () => {
     const [invoices, setInvoices] = useState([]);
     
     useEffect(() => {
-        getInvoices().then(setInvoices)
+      getInvoices().then(setInvoices);
     }, []);
 
     return (

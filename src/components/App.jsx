@@ -1,19 +1,31 @@
+import { lazy } from "react";
 import { Routes, Route } from "react-router-dom";
 
-import { Customers } from "pages/Customers/Customers";
 import { Dashboard } from "pages/Dashboard/Dashboard";
 import { Feedback } from "pages/Feedback/Feedback";
 import { Reports } from "pages/Reports/Reports";
-import { Sales } from "pages/Sales/Sales";
-import { Box } from "./Box/Box";
 import { Layout } from "./Layout/Layout";
 import { InvoicesDetails } from "./InvoicesDetails/InvoicesDetails";
-import { Invoices } from "./Invoices/Invoices";
 import { NotFound } from "pages/NotFound/NotFound";
+import { CustomerDetails } from "pages/CustomerDetails/CustomerDetails";
+import { GlobalStyle } from "./GlobalStyles";
+
+const Sales = lazy(() => import('../pages/Sales/Sales').then(
+  module => ({...module,
+  default: module.Sales
+  })));
+const Invoices = lazy(() => import('./Invoices/Invoices').then(
+  module => ({...module,
+  default: module.Invoices
+  })));
+const Customers = lazy(() => import('../pages/Customers/Customers').then(
+  module => ({...module,
+  default: module.Customers
+})));
 
 export const App = () => {
   return (
-    <Box>
+    <>
       <Routes>
         <Route path="/" element={<Layout />}>
           <Route path="dashboard" element={<Dashboard />} />
@@ -29,9 +41,11 @@ export const App = () => {
           <Route path="reports" element={<Reports />} /> 
           <Route path="feedback" element={<Feedback />} />
           <Route path="customers" element={<Customers />} />
+          <Route path="customers/:customerId" element={<CustomerDetails/>}/>
           <Route path="*" element={<NotFound />} />
         </Route>
       </Routes>
-   </Box>
+      <GlobalStyle/>
+   </>
   );
 };
